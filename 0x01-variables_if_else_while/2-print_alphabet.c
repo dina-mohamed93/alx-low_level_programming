@@ -6,16 +6,17 @@
  */
 int()
 {
-	char = 'a';
-	while (ch <= 'z')
-	{
-		putchar('ch');
-		ch++;
+        char = 'a';
+        while (ch <= 'z')
+        {
+                putchar('ch');
+                ch++;
 
-	}
-	putchar('\n');
+        }
+        putchar('\n');
 
-	return (0);
+        return (0);
 
 
 }
+
