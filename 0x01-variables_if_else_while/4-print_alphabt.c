@@ -2,21 +2,21 @@
 /**
  * main - entry point
  *
- * Description: print alphabet in lower case 
+ * Description: print alphabet in lower case
  *
  * Return: 0
  */
 int main(void)
 {
-        char ch = 'a';
+	char ch = 'a';
 
-        while (ch <= 'z')
-        {
-		if (ch =='q' || ch=='e')
+	while (ch <= 'z')
+	{
+		if (ch == 'q' || ch == 'e')
 			ch++;
-                putchar(ch);
+		putchar(ch);
 		ch++;
-        }
-        putchar('\n');
-        return (0);
+	}
+	putchar('\n');
+	return (0);
 }
