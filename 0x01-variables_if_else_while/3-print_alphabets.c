@@ -1,20 +1,20 @@
 #include <stdio.h>
-/** 
- * main - entry point 
+/**
+ * main - entry point
  *
  * Description: print lowwer and upper alphabet
  *
  * Return: 0
  */
-int main()
+int main(void)
 {
 	char ch = 'a';
 	char CH = 'A';
-	
+
 	while (ch <= 'z')
 	{
 		putchar(ch);
-	        ch++;
+		ch++;
 	}
 	while (CH <= 'Z')
 	{
