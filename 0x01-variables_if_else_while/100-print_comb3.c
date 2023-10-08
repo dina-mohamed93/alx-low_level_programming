@@ -2,19 +2,32 @@
 /**
  * main - entry point
  *
- * Description: print lowwer and upper alphabet
+ * Description: print combinations of two digits
  *
  * Return: 0
  */
 int main(void)
 {
-        int i, j;
-        for (i = 0;i <=9; i++)
-        {
-                for (j = 0 ;j <= 9;j++)
-                        if(i == j)
-                                i++;
-                printf("%i%i,", ij);
-        return (0);
+	int digit1 = 0, digit2;
+
+	while (digit <= 9)
+	{
+		digit2 = 0;
+		while (digit2 <= 9)
+		{
+			if (digit1 != digit2 && digit1 < digit2)
+			{
+				putchar(digit1 + 48);
+				putchar(digit2 + 48);
+			        if (digit1 + digit2 != 17)
+				{
+					putchar(',');
+					putchar('');
+				}
+			}
+			digit2++;
+		}
+		putchar('\n');
         }
+	return (0);
 }
