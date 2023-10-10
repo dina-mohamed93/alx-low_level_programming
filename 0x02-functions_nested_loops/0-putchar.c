@@ -1,4 +1,5 @@
 #include "main.h"
+#define MAIN-H
 
 /**
  * main - Entry point
