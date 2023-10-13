@@ -8,10 +8,10 @@
 
 int main(void)
 {
-	int num ;
+	int num;
 
-	if (num >= 65 || num <=98)
+	if (num >= 65 || num <= 98)
 		return (1);
-	else 
+	else
 		return (0);
 }
