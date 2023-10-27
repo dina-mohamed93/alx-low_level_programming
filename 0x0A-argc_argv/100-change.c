@@ -4,46 +4,52 @@
 #include <ctype.h>
 
 /**
- * main - prints the minimum number
+ * main - prints the minimum number of coins
+ * to make change for an amount of money
  * @argc: n args
  * @argv: arr args
  * Return: 0
  */
-
-using namespace std;
-
-// m is size of coins array (number of different coins)
-int minCoins(int coins[], int m, int V)
+int main(int argc, char *argv[])
 {
-   // base case
-   if (V == 0) return 0;
+	int value, c;
 
-   // Initialize result
-   int res = INT_MAX;
-
-   // Try every coin that has smaller value than V
-   for (int i=0; i<m; i++)
-   {
-     if (coins[i] <= V)
-     {
-         int sub_res = minCoins(coins, m, V-coins[i]);
-
-         // Check for INT_MAX to avoid overflow and see if
-         // result can minimized
-         if (sub_res != INT_MAX && sub_res + 1 < res)
-            res = sub_res + 1;
-     }
-   }
-   return res;
-}
-
-// Driver program to test above function
-int main()
-{
-    int coins[] =  {9, 6, 5, 1};
-    int m = sizeof(coins)/sizeof(coins[0]);
-    int V = 11;
-    cout << "Minimum coins required is "
-         << minCoins(coins, m, V);
-    return 0;
+	c = 0;
+	if (argc != 2)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	value = atoi(argv[1]);
+	if (value < 0)
+	{
+		printf("%d\n", 0);
+		return (0);
+	}
+	if (value % 25 >= 0)
+	{
+		c += value / 25;
+		value = value % 25;
+	}
+	if (value % 10 >= 0)
+	{
+		c += value / 10;
+		value = value % 10;
+	}
+	if (value % 5 >= 0)
+	{
+		c += value / 5;
+		value = value % 5;
+	}
+	if (value % 2 >= 0)
+	{
+		c += value / 2;
+		value = value % 2;
+	}
+	if (value % 1 >= 0)
+	{
+		c += value / 1;
+	}
+	printf("%d\n", c);
+	return (0);
 }
