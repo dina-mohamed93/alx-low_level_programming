@@ -1,40 +1,55 @@
 #include "main.h"
 
 /**
- *create_array - array for prints a string
- *@size: number elements array
- *@c: char
- *Return: pointer
+ * _strlen - length of a string
+ * @s: input char
+ * Return: length of a string
  */
 
-char *create_array(unsigned int size, char c)
+int _strlen(char *s)
 {
-	char *buffer;
-	unsigned int position;
+	int l = 0;
 
-	if (size == 0)
+	while (*s != '\0')
 	{
-		return (NULL);
+		s++;
+		l++;
 	}
+	return (l);
+}
 
-	/*Define values with malloc*/
-	buffer = (char *) malloc(size * sizeof(c));
+/**
+* str_concat - Concat 2 strings.
+* @s1: string
+* @s2: string
+* Return: char
+*/
 
-	if (buffer == 0)
-	{
-		return (NULL);
-	}
+char *str_concat(char *s1, char *s2)
+{
+	unsigned int l1, l2;
+	char *conc, *tmp;
 
+	if (!s1)
+		s1 = "";
 	else
-	{
-		position = 0;
-		while (position < size) /*While for array*/
-		{
-			*(buffer + position) = c;
-			position++;
-		}
+		l1 = _strlen(s1);
 
-		return (buffer);
-	}
+	if (!s2)
+		s2 = "";
+	else
+		l2 = _strlen(s2);
 
+	conc = malloc(l1 + l2 + 1);
+	if (!conc)
+		return (0);
+
+	tmp = conc;
+	while (*s1)
+		*tmp++ = *s1++;
+
+	while ((*tmp++ = *s2++))
+		;
+
+	return (conc);
 }
