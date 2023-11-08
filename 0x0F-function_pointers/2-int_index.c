@@ -1,19 +1,25 @@
 #include "function_pointers.h"
 
 /**
- * array_iterator - maps an array through a func pointer
- * @array : the int array
- * @size: the array size
- * @action: function pointer
- *
- * return: void
+ * int_index - searches for an integer
+ * @array: array of elemnts
+ * @size: number of elements in the array
+ * @cmp: is a pointer to the function to be used to compare values
+ * Return: index first element cmp function does not return 0
+ * If no element matches, return -1
+ * If size <= 0, return -1
  */
 
 int int_index(int *array, int size, int (*cmp)(int));
 {
-	int *end = array + size -1;
+	int i = 0;
 
-	if (array && size && action)
-		while (array <= end)
-			action(*array++);
+	if (array && size && cmp)
+		while (i < size)
+		{
+			if (cmp(array[i]))
+				return (i);
+			i++;
+
+		}
 }
