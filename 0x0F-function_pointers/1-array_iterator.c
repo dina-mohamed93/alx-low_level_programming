@@ -6,13 +6,14 @@
  * @size: the array size
  * @action: function pointer
  *
- * return: void
+ * Return: void
  */
 
-int int_index(int *array, int size, int (*cmp)(int));
+void array_iterator(int *array, size_t size, void (*action)(int))
 {
-        int *end = array + size -1;
+	int *end = array + size - 1;
 
-        if (array && size && action)
-                while (array <= end)
-                        action(*array++);
+	if (array && size && action)
+		while (array <= end)
+			action(*array++);
+}
