@@ -3,41 +3,49 @@
 #include <stdio.h>
 
 /**
- * print_int - prints int
- * @list: arguments from print_all
+ * format_char - formats character
+ * @separator: the string seprator
+ * @ap: argument pointer
  */
-void print_int(va_list list)
+void format_char(char *separator, va_list ap)
 {
-	printf("%d", va_arg(list, int));
+	printf("%s%c", separator, va_arg(ap, int));
 }
 
 /**
- * print_float - prints float
- * @list: arguments from print_all
+ * format_int - formats integer
+ * @separator: the string seprator
+ * @ap: argument pointer
  */
-void print_float(va_list list)
+void format_int(char *separator, va_list ap)
 {
-	printf("%f", va_arg(list, double));
+	printf("%s%d", va_arg(ap, int));
 }
 
 /**
- * print_char - prints int
- * @list: arguments from print_all
+ * format_float - formats float
+ * @separator: the string seprator
+ * @ap: argument pointer
  */
-void print_char(va_list list)
+void format_float(char *separator, va_list ap)
 {
-	printf("%c", va_arg(list, int));
+	printf("%s%f", separator, va_arg(ap, double));
 }
 
 /**
- * print_str - prints string
- * @list: arguments from print_all
+ * format_string - prints string
+ * @separator: the string seprator
+ * @ap: arguments from print_all
  */
-void print_str(va_list list)
+void format_string(char *separator, va_list ap)
 {
-	char *s = va_arg(list, char *);
+	char *str = va_arg(ap, char *);
 
-	s == NULL ? printf("(nil)") : printf("%s", s);
+	switch ((int)(!str))
+	case 1:
+		str = "(nil)";
+
+		printf("%s%s", separator, str);
 
 }
 
@@ -48,11 +56,11 @@ void print_str(va_list list)
 
 void print_all(const char * const format, ...)
 {
-	va_list list;
+	va_list ap;
 	int i = 0, j = 0;
-	char *sep = "";
+	char *separator = "";
 
-	printTypeStruct printType[] = {
+	token_t tokens[] = {
 		{ "i", print_int },
 		{ "f", print_float },
 		{ "c", print_char },
@@ -61,19 +69,17 @@ void print_all(const char * const format, ...)
 	};
 
 
-	va_start(list, format);
+	va_start(ap, format);
 
 	while (format && format[i])
 	{
 		j = 0;
-		while (j < 4)
+		while (token[j].token)
 		{
-			if (*printType[j].type == format[i])
+			if (format[i] == tokens[j].token[0])
 			{
-				printf("%s", sep);
-				printType[j].printer(list);
+				tokens[j].f(separator, ap);
 				sep = ", ";
-				break;
 			}
 			j++;
 		}
@@ -81,5 +87,5 @@ void print_all(const char * const format, ...)
 	}
 
 	printf("\n");
-	va_end(list);
+	va_end(ap);
 }
